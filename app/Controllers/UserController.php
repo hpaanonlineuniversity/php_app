@@ -4,6 +4,14 @@ require_once __DIR__ . '/../Models/User.php';
 
 class UserController extends Controller {
 
+    public function __construct() {
+        // Login မဝင်ထားပါက Login Page သို့ ပြန်ညွှန်းခြင်း
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /auth/login');
+            exit;
+        }
+    }
+
     // User List ပြသခြင်း
     public function index() {
         $userModel = new User();

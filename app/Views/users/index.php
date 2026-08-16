@@ -20,8 +20,15 @@ if (empty($_SESSION['csrf_token'])) {
     </style>
 </head>
 <body>
-    <h2>User List</h2>
-    <a href="/user/create" class="btn">+ Add New User</a>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    	<h2>User List</h2>
+    		<div>
+        		Welcome, <strong><?= htmlspecialchars($_SESSION['user_name'] ?? 'User') ?></strong> | 
+        		<a href="/auth/logout" style="color: red;">Logout</a>
+    			<a href="/user/create" class="btn">+ Add New User</a>
+    		</div>
+    </div>
+
 
     <table>
         <thead>

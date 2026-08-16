@@ -64,4 +64,12 @@ class User extends Model {
         $stmt = $this->db->prepare($sql);
         return $stmt->execute(['id' => $id]);
     }
+
+    // Email ဖြင့် User ကို ရှာခြင်း
+    public function findByEmail($email) {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetch();
+    }
+
 }
