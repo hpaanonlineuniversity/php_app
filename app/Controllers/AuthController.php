@@ -67,17 +67,17 @@ class AuthController extends Controller {
     // Logout လုပ်ခြင်း (GET/POST /auth/logout)
     public function logout() {
         // Session များကို ဖျက်ဆီးခြင်း
-        $_SESSION = [];
+        $_SESSION = [];  // Server RAM/Memory Clean Up
 
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
+        if (ini_get("session.use_cookies")) {       // PHP Session သည် Cookie ကို အသုံးပြုထားခြင်း ဟုတ်/မဟုတ် စစ်ဆေးသည်။
+            $params = session_get_cookie_params();  // Cookie ၏ Path, Domain, Secure, HttpOnly စသည့် မူလ Setting များကို ယူသည်
             setcookie(session_name(), '', time() - 42000,
                 $params["path"], $params["domain"],
                 $params["secure"], $params["httponly"]
             );
         }
 
-        session_destroy();
+        session_destroy();  // Server Disk Storage Clean Up
 
         header('Location: /auth/login');
         exit;

@@ -76,7 +76,7 @@ class UserController extends Controller {
             ]);
 
             if ($success) {
-                unset($_SESSION['csrf_token']);
+
                 header('Location: /user/index');
                 exit;
             } else {
@@ -113,8 +113,7 @@ class UserController extends Controller {
             ]);
 
             if ($success) {
-                // CSRF Token ဖျက်ပြီး User List သို့ ပြန်ညွှန်းခြင်း
-                unset($_SESSION['csrf_token']);
+ 
                 header('Location: /user/index');
                 exit;
             } else {
